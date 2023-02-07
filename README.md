@@ -32,7 +32,7 @@ let secrets = AppStore.Secrets(
   apploaderUsername: ProcessInfo.processInfo.environment["APPLOADER_USERNAME"],
   apploaderPassword: ProcessInfo.processInfo.environment["APPLOADER_USERNAME"])
 
-let appStore = try AppStore(secrets:secrets, logRoot: logRoot, artifactRoot: artifactRoot)
+let appStore = try AppStore(secrets: secrets, logRoot: logRoot, artifactRoot: artifactRoot)
 try appStore.build(project: "MyProject.xcodeproj", scheme: "MyScheme")
 ```
 

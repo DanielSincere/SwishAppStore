@@ -35,3 +35,10 @@ let secrets = AppStore.Secrets(
 let appStore = try AppStore(secrets:secrets, logRoot: logRoot, artifactRoot: artifactRoot)
 try appStore.build(project: "MyProject.xcodeproj", scheme: "MyScheme")
 ```
+
+
+This approach empowers you to store your secrets in the environment, or use [Sh1Password](https://github.com/FullQueueDeveloper/Sh1Password.git) to fetch secrets from 1Password.
+
+## Next steps
+
+This package is super tiny. If your needs are more specific, you can easily copy the contents of the script into your own [Swish](https://github.com/FullQueueDeveloper/Swish.git) scripts, and easily customize with the exact variations you requrie.

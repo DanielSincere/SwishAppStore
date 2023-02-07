@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/FullQueueDeveloper/ShXcrun.git",
       "state" : {
-        "revision" : "eb83e761ef0cf46e2db054260540ec5ac219ec03",
-        "version" : "0.2.0"
+        "revision" : "c84151a8c208de50f7ac5f3bcd096a538b4e120d",
+        "version" : "0.3.0"
       }
     }
   ],

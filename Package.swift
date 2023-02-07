@@ -9,7 +9,7 @@ let package = Package(
     .library(name: "SwishAppStore", targets: ["SwishAppStore"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/FullQueueDeveloper/ShXcrun.git", from: "0.1.9"),
+    .package(url: "https://github.com/FullQueueDeveloper/ShXcrun.git", from: "0.3.0"),
     .package(url: "https://github.com/FullQueueDeveloper/Sh.git", from: "1.2.0"),
     .package(url: "https://github.com/FullQueueDeveloper/ShGit.git", from: "1.1.0"),
   ],

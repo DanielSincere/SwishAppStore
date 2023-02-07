@@ -24,14 +24,14 @@ And the `main.swift` in your `appstore` target might look like this.
 ```swift
 import SwishAppStore
 
-let logRoot = "Swish/logs"
-let artifactRoot = "Swish/artifacts"
+guard let appleTeamID = ProcessInfo.processInfo.environment["APPLE_TEAM_ID"],
+  let apploaderUsername = ProcessInfo.processInfo.environment["APPLOADER_USERNAME"],
+  let apploaderPassword = ProcessInfo.processInfo.environment["APPLOADER_USERNAME"]
+else {
+  fatalError("Secrets missing")
+}
 
-let secrets = AppStore.Secrets(
-  appleTeamID: ProcessInfo.processInfo.environment["APPLE_TEAM_ID"],
-  apploaderUsername: ProcessInfo.processInfo.environment["APPLOADER_USERNAME"],
-  apploaderPassword: ProcessInfo.processInfo.environment["APPLOADER_USERNAME"])
-
-let appStore = try AppStore(secrets:secrets, logRoot: logRoot, artifactRoot: artifactRoot)
-try appStore.build(project: "MyProject.xcodeproj", scheme: "MyScheme")
+let appStore = try AppStore(project: "MyProject.xcodeproj", scheme: "MyScheme")
+try appStore.build(appleTeamID: appleTeamID)
+try appStore.upload(credential: .password(username: apploaderUsername, password: apploaderPassword))
 ```

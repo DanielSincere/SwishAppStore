@@ -36,7 +36,7 @@ public struct AppStore {
     
     print("=== Build start ===".cyan)
     let archivePath = "\(artifactRoot)/\(scheme).xcarchive"
-    let exportOptionsPath = "\(artifactRoot)/exportOptions.plist"
+    let exportOptionsPath = "\(artifactRoot)/\(scheme)-exportOptions.plist"
     let exportOptions = ExportOptions(compileBitcode: false,
                                       manageAppVersionAndBuildNumber: true,
                                       method: .appStore,
@@ -51,8 +51,8 @@ public struct AppStore {
                                 sdk: "iphoneos",
                                 allowProvisioningUpdates: true,
                                 allowProvisioningDeviceRegistration: true)
-    try xcodebuild.archive(.file("\(logRoot)/archive.log"), path: archivePath)
-    try xcodebuild.exportArchive(.file("\(logRoot)/exportArchive.log"),
+    try xcodebuild.archive(.file("\(logRoot)/\(scheme)-archive.log"), path: archivePath)
+    try xcodebuild.exportArchive(.file("\(logRoot)/\(scheme)-exportArchive.log"),
                                  archivePath: archivePath,
                                  exportPath: artifactRoot,
                                  exportOptionsPlistPath: exportOptionsPath)
@@ -62,7 +62,7 @@ public struct AppStore {
   public func upload(credential: AltoolCredential, platform: Altool.Platform = .iOS) throws {
     print("=== Uploading to App Store ===".cyan)
     let altool = Altool(credential: credential)
-    try altool.uploadApp(.file("\(logRoot)/upload.log"),
+    try altool.uploadApp(.file("\(logRoot)/\(scheme)-upload.log"),
                          file: "\(artifactRoot)/\(scheme).ipa",
                          platform: platform)
     print("=== Upload complete ===".green)

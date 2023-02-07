@@ -23,6 +23,12 @@ public struct AppStore {
       throw Errors.gitRepoHasUncommitedFiles
     }
 
+    try FileManager.default.createDirectory(atPath: logRoot,
+                                            withIntermediateDirectories: true)
+    try FileManager.default.createDirectory(atPath: artifactRoot,
+                                            withIntermediateDirectories: true)
+
+
     print("=== Build start ===".cyan)
     let archivePath = "\(artifactRoot)/\(scheme).xcarchive"
     let exportOptionsPath = "\(artifactRoot)/exportOptions.plist"
@@ -53,7 +59,7 @@ public struct AppStore {
                          platform: .iOS)
     print("=== Build complete ===".green)
   }
-  
+
   public enum Errors: LocalizedError {
     case gitRepoHasUncommitedFiles
     public var errorDescription: String? {
